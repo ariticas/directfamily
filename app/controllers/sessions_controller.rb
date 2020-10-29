@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
       if user && user.authenticate(params[:session][:password])
         #this prevents session fixation atack nby reseting session before loggin in to clear ID and data
         reset_session
-        log_in User
+        log_in user
         redirect_to user
       else
          #flash.now will dissapaer when new request is made unlike flash that dissapears on the second request
