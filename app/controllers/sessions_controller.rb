@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
       if user && user.authenticate(params[:session][:password])
         #this prevents session fixation atack nby reseting session before loggin in to clear ID and data
         reset_session
+        remeber user
         log_in user
         redirect_to user
       else
@@ -20,4 +21,6 @@ class SessionsController < ApplicationController
       log_out
       redirect_to root_url
   end
+  
+  
 end
