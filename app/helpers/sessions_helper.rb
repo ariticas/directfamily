@@ -9,7 +9,7 @@ module SessionsHelper
  def remember(user)
      user.remember
      cookies.permanent.encrypted[:user_id] = user.id
-     cookies.permananent[:remember_token] = user.remember_token
+     cookies.permanent[:remember_token] = user.remember_token
  end
  
  # Returns the current logged-in user (if any).
@@ -30,9 +30,17 @@ module SessionsHelper
      !current_user.nil?
  end
  
- #logs out the current user
  
+ #forgets a persistent session
+  def forget(user)
+      user.forget
+      cookies.delete(:user_id)
+      cookies.delete(:remember_token)
+  end
+ 
+ #logs out the current user
  def log_out
+     forget(current_user)
      reset_session
      @current_user = nil
  end 
