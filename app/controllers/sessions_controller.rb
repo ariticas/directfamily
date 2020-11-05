@@ -1,27 +1,24 @@
 class SessionsController < ApplicationController
+
   def new
   end
-  
+
   def create
-      user = User.find_by(email: params[:session][:email].downcase)
-      if user && user.authenticate(params[:session][:password])
-        #this prevents session fixation atack nby reseting session before loggin in to clear ID and data
+    user = User.find_by(email: params[:session][:email].downcase)
+    if user && user.authenticate(params[:session][:password])
+        forwarding_url = session[:forwarding_url]
         reset_session
         params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-        remember user
         log_in user
-        redirect_to user
-      else
-         #flash.now will dissapaer when new request is made unlike flash that dissapears on the second request
-        flash.now[:danger] = 'Invalid email/password combination'
-        render 'new'
+        redirect_to forwarding_url || user
+    else
+      flash.now[:danger] = 'Invalid email/password combination'
+      render 'new'
     end
   end
-  
+
   def destroy
-      log_out if logged_in?
-      redirect_to root_url
+    log_out if logged_in?
+    redirect_to root_url
   end
-  
-  
 end
