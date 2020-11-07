@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails',                      '6.0.3.2'
-gem 'bcrypt',                     '3.1.13' 
+gem 'rails',                      '6.0.3.4'
 gem 'image_processing',           '1.9.3'
 gem 'mini_magick',                '4.9.5'
 gem 'active_storage_validations', '0.8.9'
+gem 'bcrypt',                     '3.1.13'
 gem 'faker',                      '2.11.0'
 gem 'will_paginate',              '3.3.0'
 gem 'bootstrap-will_paginate',    '1.0.0'
@@ -25,7 +25,7 @@ end
 group :development do
   gem 'web-console',           '4.0.2'
   gem 'listen',                '3.2.1'
-  gem 'spring',                '2.1.0'
+  gem 'spring',                '2.1.1'
   gem 'spring-watcher-listen', '2.0.1'
 end
 
@@ -38,7 +38,6 @@ group :test do
   gem 'minitest-reporters',       '1.3.8'
   gem 'guard',                    '2.16.2'
   gem 'guard-minitest',           '2.4.6'
-  
 end
 
 group :production do
