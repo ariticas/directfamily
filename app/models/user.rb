@@ -1,6 +1,6 @@
 class User < ApplicationRecord
     attr_accessor :remember_token, :activation_token
-    before_save {self.email = email.downcase}
+    before_save :downcase_email
     before_create :create_activation_digest
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :name , presence: true, length: { maximum:50 }
@@ -51,6 +51,8 @@ class User < ApplicationRecord
  def send_activation_email
      UserMailer.account_activation(self).deliver_now
  end
+ 
+ private
  
  def downcase_email
     self.email = email.downcase

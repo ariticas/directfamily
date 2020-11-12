@@ -18,8 +18,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      @user.send_activation_email
-      UserMailer.account_activation(@user).deliver_now
+     @user.send_activation_email
       flash[:info] = 'Please Check your email to activate your Direct Family Solutions Account'
       redirect_to root_url
     else
