@@ -39,3 +39,12 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+#Added 
+
+/config/credentials.yml.enc
+/.env
+/.DS_store
+/config/database.yml
+
+/.env
