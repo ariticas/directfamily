@@ -10,18 +10,12 @@
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
-/db/*.sqlite3-*
 
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-
-# Ignore pidfiles, but keep the directory.
-/tmp/pids/*
-!/tmp/pids/
-!/tmp/pids/.keep
 
 # Ignore uploaded files in development.
 /storage/*
@@ -40,11 +34,8 @@
 yarn-debug.log*
 .yarn-integrity
 
-#Added 
+# Ignore macOS DS_Store.
+.DS_Store
 
-/config/credentials.yml.enc
-/.env
-/.DS_store
-/config/database.yml
-
-/.env
+# Ignore db test files.
+db/test.*
